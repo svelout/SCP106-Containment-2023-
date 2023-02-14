@@ -18,6 +18,7 @@ namespace SCP106_Contaiment
 
         public override void OnDisabled()
         {
+            Instance = null;
             base.OnDisabled();
         }
     }

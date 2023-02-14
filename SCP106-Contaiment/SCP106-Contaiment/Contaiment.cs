@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace SCP106_Contaiment
 {
-    internal class Contaiment
+    public class Contaiment
     {
         private float[] positions = new float[788];
         // 47,852 47.063
         
-        internal void InjectPositionы()
+        internal void InjectPositions()
         {
             int x = 0;
             for (float pos = 47.852f; pos > 47.063f;pos -= 0.001f)
@@ -20,7 +20,7 @@ namespace SCP106_Contaiment
                 x++;
             }
         }
-        private bool contaiment_ready = false;
+        public bool contaiment_ready = false;
         public void StartingContaiment(Player player, Player _object, Player scp_106)
         {            
             if (scp_106 != null && scp_106.Role.Type == PlayerRoles.RoleTypeId.Scp106)
@@ -47,6 +47,7 @@ namespace SCP106_Contaiment
                 player.Position.y == -999.106f && player.Position.z == 140.211f)
             {
                 Cassie.Message(Plugin.Instance.Config.cassie[1]);
+                contaiment_ready = true;
             }
         }
     }
