@@ -1,0 +1,2 @@
+C:\Users\stepa\source\repos\SCP106-Containment-2023-\SCP106-Contaiment\SCP106-Contaiment\obj\Debug\SCP106-Contaiment.csproj.AssemblyReference.cache
+C:\Users\stepa\source\repos\SCP106-Containment-2023-\SCP106-Contaiment\SCP106-Contaiment\obj\Debug\SCP106-Contaiment.csproj.CoreCompileInputs.cache
