@@ -18,7 +18,17 @@ namespace SCP106_Contaiment
         {
             Player _object = null;
             Player scp_106 = null;
-            if (ev.Hotkey == HotkeyButton.Keycard && ev.Player.CurrentRoom.Type == RoomType.Hcz106 && ev.Player.Role.Side != Side.Scp)
+            bool get_pos = false;
+            bool first_start = false;
+            GetPos(ev.Player, ref get_pos);
+            if (get_pos != true)
+                return;
+            if (first_start == false)
+            {
+                OnEnabled(ev.Player);
+                first_start = true;
+            }
+            if (ev.Hotkey == HotkeyButton.Keycard && ev.Player.CurrentRoom.Type == RoomType.Hcz106 && ev.Player.Role.Side != Side.Scp && fisrt_start != false)
             {
                 IEnumerator<Player> p_list = Player.List.GetEnumerator();
                 while (p_list.MoveNext())
@@ -31,7 +41,7 @@ namespace SCP106_Contaiment
                     IEnumerator<Player> enumerator = ev.Player.CurrentRoom.Players.GetEnumerator();
                     while (enumerator.MoveNext())
                         count++;
-                    if (count <= 2 && count > 1 && contaiment_ready == true)
+                    if (count == 2 && contaiment_ready == true)
                     {
                         enumerator.Reset();
                         while (enumerator.MoveNext())
@@ -42,7 +52,7 @@ namespace SCP106_Contaiment
                             }
                             else continue;
                         }
-                        StartingContaiment(ev.Player, _object, scp_106);
+                        StartingContaiment(ev.Player, _object, scp_106);                       
                     }
                 }
             }

@@ -41,10 +41,19 @@ namespace SCP106_Contaiment
             }
         }
 
+        internal void GetPos(Player player, ref bool get_pos)
+        {
+            if (Array.Exists(positions, element => element == player.Position.x) &&
+                player.Position.y == -999.106f && player.Position.z == 140.211f)
+                {
+                    get_pos = true;
+                }
+            else get_pos = false;
+        }
+
         public void OnEnabled(Player player)
         {          
-            if (player.CurrentRoom.Type == RoomType.Hcz106 && Array.Exists(positions, element => element == player.Position.x) && 
-                player.Position.y == -999.106f && player.Position.z == 140.211f)
+            if (player.CurrentRoom.Type == RoomType.Hcz106)
             {
                 Cassie.Message(Plugin.Instance.Config.cassie[1]);
                 contaiment_ready = true;
