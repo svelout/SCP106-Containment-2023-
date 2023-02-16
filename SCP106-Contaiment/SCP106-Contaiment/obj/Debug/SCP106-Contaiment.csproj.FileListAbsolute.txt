@@ -57,3 +57,4 @@ C:\Users\stepa\source\repos\SCP106-Containment-2023-\SCP106-Contaiment\SCP106-Co
 C:\Users\stepa\source\repos\SCP106-Containment-2023-\SCP106-Contaiment\SCP106-Contaiment\obj\Debug\SCP106-Contaiment.csproj.CopyComplete
 C:\Users\stepa\source\repos\SCP106-Containment-2023-\SCP106-Contaiment\SCP106-Contaiment\obj\Debug\SCP106-Contaiment.dll
 C:\Users\stepa\source\repos\SCP106-Containment-2023-\SCP106-Contaiment\SCP106-Contaiment\obj\Debug\SCP106-Contaiment.pdb
+C:\Users\stepa\source\repos\SCP106-Containment-2023-\SCP106-Contaiment\SCP106-Contaiment\bin\Debug\Assembly-CSharp-firstpass.dll
