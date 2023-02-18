@@ -12,9 +12,18 @@ namespace SCP106_Contaiment
     public class EventHandlers : Contaiment
     {
         public bool first_start = false;
-        public void OnWaitingForPlayers()
+        public Player scp_106 = null;
+        public void OnRoundStarted()
         {
-            InjectPositions();
+            try
+            {
+                Log.Info("Позиции успешно загружены!");
+                Log.Info(obj.transform.position.x);
+            }
+            catch (NullReferenceException ex)
+            {
+                Log.Error($"Произошла ошибка: ({ex.Message}) из-за объекта ({ex.TargetSite.Module})");
+            }
         }
         private bool IsGeneratesActivated()
         {
@@ -25,13 +34,12 @@ namespace SCP106_Contaiment
             else return false;
         }
 
+        private List<RoleTypeId> chaos = new List<RoleTypeId> { RoleTypeId.ChaosConscript, RoleTypeId.ChaosMarauder, RoleTypeId.ChaosRepressor, RoleTypeId.ChaosRifleman };
+
         public void OnProccesingHotKey(ProcessingHotkeyEventArgs ev)
         {
             Player _object = null;
-            Player scp_106 = null;
-            bool get_pos = false;
-            GetPos(ev.Player, ref get_pos);
-            if (get_pos != true)
+            if (GetPos(ev.Player) != true)
                 return;
             if (first_start == false)
             {
@@ -39,13 +47,8 @@ namespace SCP106_Contaiment
                 first_start = true;
             }
             if (ev.Hotkey == HotkeyButton.Keycard && ev.Player.CurrentRoom.Type == RoomType.Hcz106 && ev.Player.Role.Side != Side.Scp && first_start != false)
-            {
-                IEnumerator<Player> p_list = Player.List.GetEnumerator();
-                while (p_list.MoveNext())
-                    if (p_list.Current.Role.Type == RoleTypeId.Scp106)
-                        scp_106 = p_list.Current;
-                    else continue;
-                if (ev.Player.CurrentItem.Type == ItemType.KeycardO5 && ev.Player.CurrentItem.Type == ItemType.KeycardNTFCommander && ev.Player.CurrentItem.Type == ItemType.KeycardChaosInsurgency && scp_106 != null)
+            {               
+                if (ev.Player.CurrentItem.Type == ItemType.KeycardO5 && scp_106 != null || ev.Player.Role.Type == RoleTypeId.NtfCaptain && scp_106 != null || chaos.Contains(ev.Player.Role.Type) && scp_106 != null)
                 {
                     int count = 0;
                     IEnumerator<Player> enumerator = ev.Player.CurrentRoom.Players.GetEnumerator();
@@ -68,10 +71,8 @@ namespace SCP106_Contaiment
             }            
         }
         public void OnChangingMoveState(ChangingMoveStateEventArgs ev)
-        {
-            bool get_pos = false;
-            GetPos(ev.Player, ref get_pos);
-            if (get_pos != true)
+        {                      
+            if (GetPos(ev.Player) != true)
             {
                 if (Timing.CurrentCoroutine != null) Timing.KillCoroutines();
                 return;
@@ -82,12 +83,16 @@ namespace SCP106_Contaiment
         private IEnumerator<float> ContaimentMenuHint(Player player, Room room) 
         {
             for (; ; )
-            {
+            {               
                 int count = 0;
                 IEnumerator<Player> __enum = room.Players.GetEnumerator();
                 while (__enum.MoveNext())
                     count++;
                 yield return Timing.WaitForSeconds(1f);
+                if (IsScp106InGame() != true)
+                {
+                    player.ShowHint(Plugin.Instance.Config.hints[5]);
+                }
                 if (IsGeneratesActivated() == false)
                 {
                     player.ShowHint(Plugin.Instance.Config.hints[1]);
@@ -105,6 +110,19 @@ namespace SCP106_Contaiment
                     player.ShowHint(Plugin.Instance.Config.hints[2]);
                 }
             }
+        }
+
+        internal bool IsScp106InGame()
+        {
+            IEnumerator<Player> p_list = Player.List.GetEnumerator();
+            while (p_list.MoveNext())
+            {
+                if (p_list.Current.Role.Type == RoleTypeId.Scp106)
+                    scp_106 = p_list.Current;
+                else continue;
+            }
+            if (scp_106 != null) return true;
+            else return false;
         }
     }
 }

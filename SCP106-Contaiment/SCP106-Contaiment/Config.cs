@@ -18,12 +18,14 @@ namespace SCP106_Contaiment
             "BIOLOGICAL ORGANISM DETECTED . SCP 1 0 6 CONTAINMENT READY TO START . CONTAMINATION START IN 3 . 2 . 1",
             "WARNING . DEVICE STARTING COMPLETED SUCCESSFULLY . PLEASE PUT BIOLOGICAL ORGANISM IN CONTAIN FACILITY .G2 AND RUN PROTOCOLS OF CONTAINMENT"
         };
+        [Description("Хинты")]
         public List<string> hints { get; set; } = new List<string>() 
         {
             "Необходимо активировать все генераторы",
             "Нажмите L CTRL для подготовки условия содержания",
             "Нажмите L CTRL для запуска условия содержания",
-            "Вы не можете запустить условие содержания так как в комнате нет биологического объекта"
+            "Вы не можете запустить условие содержания так как в комнате нет биологического объекта",
+            "Недоступно"
         };
         
     }
