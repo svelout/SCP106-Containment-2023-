@@ -13,6 +13,10 @@ namespace SCP106_Contaiment
         // "_Scences/Facility/HeavyRooms/HCZ_106/" +
         //"Map_HC_106_CR/106_1f/GFX/Main/Furniture_004/Cube"
         public GameObject obj;
+        /*
+        ОШИБКА! Подсчет неправильный, вместо y
+         должно быть z
+        */
         internal GameObject InjectPositions(GameObject obj)
         {
             Room room = Room.Get(RoomType.Hcz106);
