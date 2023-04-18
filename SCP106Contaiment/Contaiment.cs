@@ -39,9 +39,7 @@ public class Contaiment
         IsWorking = true;
         victim.Kill(DamageType.Unknown);
         Cassie.Message(Plugin.Instance.Config.cassie_messages["Сообщение, которое касье скажет после запуска условия содержаний"]);
-        Kill:
         while (Cassie.IsSpeaking) {}
-
         Timing.RunCoroutine(DeadTimer(scp106));
     }
     private static IEnumerator<float> Timer()
