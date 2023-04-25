@@ -72,6 +72,9 @@
         <Reference Include="Exiled.Events">
           <HintPath>D:\Exiled\EXILED\Plugins\Exiled.Events.dll</HintPath>
         </Reference>
+        <Reference Include="Exiled.Loader">
+          <HintPath>..\..\..\AppData\Roaming\SCP Secret Laboratory\PluginAPI\plugins\global\Exiled.Loader.dll</HintPath>
+        </Reference>
         <Reference Include="Exiled.Permissions">
           <HintPath>D:\Exiled\EXILED\Plugins\Exiled.Permissions.dll</HintPath>
         </Reference>

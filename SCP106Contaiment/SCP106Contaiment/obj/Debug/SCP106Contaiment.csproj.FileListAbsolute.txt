@@ -134,3 +134,4 @@ C:\Users\stepa\RiderProjects\SCP106Contaiment\SCP106Contaiment\obj\Debug\SCP106C
 C:\Users\stepa\RiderProjects\SCP106Contaiment\SCP106Contaiment\obj\Debug\SCP106Contaiment.csproj.CopyComplete
 C:\Users\stepa\RiderProjects\SCP106Contaiment\SCP106Contaiment\obj\Debug\SCP106Contaiment.dll
 C:\Users\stepa\RiderProjects\SCP106Contaiment\SCP106Contaiment\obj\Debug\SCP106Contaiment.pdb
+C:\Users\stepa\RiderProjects\SCP106Contaiment\SCP106Contaiment\bin\Debug\Exiled.Loader.dll

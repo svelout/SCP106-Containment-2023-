@@ -9,6 +9,7 @@
 
 using Exiled.API.Features;
 using Player = Exiled.Events.Handlers.Player;
+using Server = Exiled.Events.Handlers.Server;
 
 namespace SCP106Contaiment
 {
@@ -38,6 +39,7 @@ namespace SCP106Contaiment
         public void OnRegisterEvents()
         {
             _eh = new();
+            Server.WaitingForPlayers += _eh.OnWaitingForPlayers;
             Player.ChangingRole += _eh.OnPlayerChangedRole;
             Player.Verified += _eh.OnPlayerVerified;
             Player.ProcessingHotkey += _eh.OnProcessingHotKey;
@@ -47,6 +49,7 @@ namespace SCP106Contaiment
         public void OnUnRegisterEvents()
         {
             _eh = null;
+            Server.WaitingForPlayers -= _eh.OnWaitingForPlayers;
             Player.ChangingRole -= _eh.OnPlayerChangedRole;
             Player.Verified -= _eh.OnPlayerVerified;
             Player.ProcessingHotkey -= _eh.OnProcessingHotKey;

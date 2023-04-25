@@ -18,17 +18,17 @@ namespace SCP106Contaiment
         [Description("Включение/Выключение плагина")]
         public bool IsEnabled { get; set; } = true;
 
-        [Description("Включение/Выключение дебага")] 
+        [Description("Включение/Выключение дебага")]
         public bool Debug { get; set; } = false;
 
-        [Description("Цвет хинтов, которые появляются при подходе к объекту(ПИСАТЬ HEX КОД ЦВЕТА)")] 
+        [Description("Цвет хинтов, которые появляются при подходе к объекту(ПИСАТЬ HEX КОД ЦВЕТА)")]
         public string HintColor { get; set; } = "#FF0000";
 
         [Description("Сами хинты")]
         public Dictionary<string, string> hints { get; set; } = new()
         {
             {
-                "Хинт, для подготовки условия содержания", 
+                "Хинт, для подготовки условия содержания",
                 "Нажмите L CTRL для подготовки условия содержания"
             },
             {
@@ -55,6 +55,15 @@ namespace SCP106Contaiment
             {
                 "Сообщение, которое касье скажет после запуска условия содержаний",
                 "BIOLOGICAL ORGANISM DETECTED . CONTAMINATION START IN 3 . 2 . 1"
+            }
+        };
+
+        [Description("Игровые настройки")]
+        public Dictionary<string, double> ForDevelopers { get; set; } = new()
+        {
+            {
+                "Время обновление хинтов",
+                 1.5
             }
         };
     }

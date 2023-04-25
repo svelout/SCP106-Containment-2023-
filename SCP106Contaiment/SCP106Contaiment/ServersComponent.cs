@@ -18,7 +18,7 @@ namespace SCP106Contaiment
     public class ServersComponent : MonoBehaviour
     {
         public static GameObject Serv = GameObject.Find("ContBox");
-        private float hint_timeupdate = 1.5f;
+        private float hint_timeupdate = (float)Plugin.Instance.Config.ForDevelopers["Время обновление хинтов"];
 
         private void Update()
         {
